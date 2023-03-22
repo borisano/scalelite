@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def check_multitenancy
-  # abort 'Multitenancy is disabled, task can not be completed' unless ENV['MULTITENANCY_ENABLED']
+  abort 'Multitenancy is disabled, task can not be completed' unless ENV['MULTITENANCY_ENABLED']
 end
 
 def fetch_tenant(id)
@@ -10,6 +10,8 @@ def fetch_tenant(id)
     puts("Tenant with id #{id} does not exist in the system. Exiting...")
     exit(1)
   end
+
+  tenant
 end
 
 namespace :tenants do

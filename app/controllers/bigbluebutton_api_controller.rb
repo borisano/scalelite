@@ -27,7 +27,7 @@ class BigBlueButtonApiController < ApplicationController
     params.require(:meetingID)
 
     begin
-      meeting = Meeting.find(params[:meetingID])
+      meeting = get_meeting_for_current_tenant(params[:meetingID])
     rescue ApplicationRedisRecord::RecordNotFound
       # Respond with MeetingNotFoundError if the meeting could not be found
       logger.info("The requested meeting #{params[:meetingID]} does not exist")
